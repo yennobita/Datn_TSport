@@ -1,0 +1,31 @@
+{{>header payment="payment"}}
+
+<h2 class="text-center fs-4 mt-5 mb-5 text-success-emphasis" style="font-size: 25px; color:#373b3b;">CHỌN PHƯƠNG THỨC
+    THANH TOÁN</h2>
+<div class="grid text-center h-50 ">
+    <div class="payment-top g-col-6 ">
+        <form action="/payment/pay" method="POST">
+            <button type="submit" name="paymentMethod" value="{{price}}" id="paypalButton">
+                <input type="hidden" id="sumPriceInputPaypal" name="sumPrice">
+                <img src="/img/payment/Paypal.jpg" style="width:200px; margin-right:20px">
+                Thanh toán bằng Paypal
+            </button>
+        </form>
+
+    </div>
+    <div class="payment-bottom g-col-6 mt-5">
+        <form action="create_payment_url" method="POST">
+            <button type="submit" name="paymentMethod" value="vnpay" id="vnpayButton">
+                <input type="hidden" id="sumPriceInputVNPay" name="sumPrice">
+                <img src="/img/payment/vnpay.jpg" style="width:200px; margin-right:20px">
+                <p style="color: rgb(61, 60, 60); font-size:18px; ">Thanh toán bằng VNPay</p>
+            </button>
+        </form>
+    </div>
+</div>
+<script>
+    const price = localStorage.getItem('totalPrice');
+    $("#totalPrice").text(price)
+    let sumPricePaypal = $('#sumPriceInputPaypal').val();
+
+</script>

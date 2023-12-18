@@ -1,0 +1,153 @@
+<html lang="en">
+
+<head style="background-color: #ffffff;">
+
+  <div class="loginbackground box-background--white padding-top--64">
+    <div class="loginbackground-gridContainer">
+      <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+        <div class="box-root"
+          style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+        </div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+        <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+        <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+        <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+        <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+        <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+        <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+        <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+        <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+      </div>
+      <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+        <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+      </div>
+    </div>
+  </div>
+  <link rel="shortcut icon" type="image/png" href="/img/title/icon-shop.png" />
+  <title>Đăng Nhập</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <link rel="stylesheet" href="/css/style_login.css" />
+
+</head>
+
+<body {{!
+  style="background-image: url(/img/background/greenery-product-background_53876-90824.jpg); background-size: cover;"
+  }}>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5">
+          <a href="/" style="color: black;">
+            <i class="fa fa-home" style="margin-left: 10px;color:black"></i>
+            Trang Chủ</a>
+          <div class="login-wrap p-4 p-md-5" style="border-radius: 15px;">
+
+            <div class="d-flex">
+
+              <div class="w-100">
+
+                <h3 class="mb-4 text-center">Đăng Nhập</h3>
+
+              </div>
+
+            </div>
+
+            <form method="POST" action="/login" class="login-form">
+
+              {{#if message}}
+              <div class="alert alert-success" role="alert">
+                {{message}}
+              </div>
+              {{/if}}
+
+              {{#wrongLogin}}
+              <div class="alert alert-danger" role="alert">
+                Email hoặc mật khẩu không đúng!
+              </div>
+              {{/wrongLogin}}
+
+              {{#error}}
+              <div class="alert alert-danger" role="alert">
+                Bạn phải đăng nhập để mua hàng!
+              </div>
+              {{/error}}
+
+              <div class="form-group">
+                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span>
+                </div>
+                <input name="email" type="text" class="form-control rounded-left" placeholder="Tài Khoản" required />
+              </div>
+              <div class="form-group">
+
+                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span>
+                </div>
+
+                <input name="password" type="password" class="form-control rounded-left" placeholder="Mật Khẩu"
+                  required />
+              </div>
+
+              <div class="form-group d-flex align-items-center">
+                <div class="w-100 d-flex justify-content-center mt-4">
+                  <button value="Log In" type="submit" class="form-submit">Đăng Nhập</button>
+
+                </div>
+              </div>
+              <div class="form-group mt-4 text-center btt-login">
+                <span class="Google-Login p-2 ">
+                  <a href="/loginGoogle"><img
+                      src="https://cdn.freebiesupply.com/logos/large/2x/google-icon-logo-png-transparent.png">Google</a>
+                </span>
+                <span class="Facebook-Login p-2">
+                  <a href="/loginFacebook"><img
+                      src="http://sundevilgymnastics.com/wp-content/uploads/2016/11/FB-Icon.png"> Facebook</a>
+                </span>
+              </div>
+
+              <div class="form-group mt-4">
+                <div class="w-100 text-center">
+                  <p class="mb-1">Không Có Tài Khoản?
+                    <a href="/register">Đăng Kí</a>
+                  </p>
+                  <p class="mb-1"><a href="/forgot-password">Quên Mật Khẩu</a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="/js/jquery_login.min.js"></script>
+  <script src="/js/popper_login.js"></script>
+  <script src="/js/bootstrap_login.min.js"></script>
+  <script src="/js/main_login.js"></script>
+
+</body>
+
+</html>

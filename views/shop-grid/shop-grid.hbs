@@ -1,0 +1,367 @@
+{{>header shop="shop"}}
+
+{{!-- hieu ung snowflake start --}}
+
+<style>
+    #snowflakeContainer {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+    .snowflake {
+        padding-left: 15px;
+        font-size: 14px;
+        line-height: 24px;
+        position: fixed;
+        color: #ebebeb;
+        user-select: none;
+        z-index: 1000;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+
+    .snowflake:hover {
+        cursor: default
+    }
+</style>
+<div id='snowflakeContainer'>
+    <p class='snowflake'>❄</p>
+</div>
+<script style='text/javascript'>
+    //<![CDATA[
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"]; var transformProperty = getSupportedPropertyName(transforms); var snowflakes = []; var browserWidth; var browserHeight; var numberOfSnowflakes = 50; var resetPosition = false; function setup() { window.addEventListener("DOMContentLoaded", generateSnowflakes, false); window.addEventListener("resize", setResetFlag, false) } setup(); function getSupportedPropertyName(b) { for (var a = 0; a < b.length; a++) { if (typeof document.body.style[b[a]] != "undefined") { return b[a] } } return null } function Snowflake(b, a, d, e, c) { this.element = b; this.radius = a; this.speed = d; this.xPos = e; this.yPos = c; this.counter = 0; this.sign = Math.random() < 0.5 ? 1 : -1; this.element.style.opacity = 0.5 + Math.random(); this.element.style.fontSize = 4 + Math.random() * 30 + "px" } Snowflake.prototype.update = function () { this.counter += this.speed / 5000; this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40; this.yPos += Math.sin(this.counter) / 40 + this.speed / 30; setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos)); if (this.yPos > browserHeight) { this.yPos = -50 } }; function setTranslate3DTransform(a, c, b) { var d = "translate3d(" + c + "px, " + b + "px, 0)"; a.style[transformProperty] = d } function generateSnowflakes() { var b = document.querySelector(".snowflake"); var h = b.parentNode; browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var d = 0; d < numberOfSnowflakes; d++) { var j = b.cloneNode(true); h.appendChild(j); var e = getPosition(50, browserWidth); var a = getPosition(50, browserHeight); var c = 5 + Math.random() * 40; var g = 4 + Math.random() * 10; var f = new Snowflake(j, g, c, e, a); snowflakes.push(f) } h.removeChild(b); moveSnowflakes() } function moveSnowflakes() { for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.update() } if (resetPosition) { browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.xPos = getPosition(50, browserWidth); a.yPos = getPosition(50, browserHeight) } resetPosition = false } requestAnimationFrame(moveSnowflakes) } function getPosition(b, a) { return Math.round(-1 * b + Math.random() * (a + 2 * b)) } function setResetFlag(a) { resetPosition = true };
+    //]]>
+</script>
+{{!-- hieu ung snowflake end --}}
+<!-- Breadcrumb Section Begin -->
+<section class="bread-crumb mb-3">
+    <span class="crumb-border"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 a-left">
+                <ul class="breadcrumb m-0 px-0">
+                    <li>
+                        <a href="/" target="_self"><span>Trang chủ</span></a>
+                        <span class="mr_lr">&nbsp;/&nbsp;</span>
+                    </li>
+
+                    <li class="active">
+                        <span>Tất cả sản phẩm</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Product Section Begin -->
+<section class="product ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-5">
+                <div class="sidebar">
+                    <div class="sidebar__item">
+                        <div class="porto-links-block m-b-none">
+                            <div class="links-title"><i class="fa fa-navicon"></i>Danh mục</div>
+                            <div class="links-content">
+                                <ul class="list-unstyled">
+                                    {{#each category}}
+                                    <li class="porto-links-item"><a
+                                            href="/shop-grid/{{this.idCategory}}">{{this.name}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar__item">
+                        <h4>Lọc sản phẩm theo giá:</h4>
+
+                        <form id="slider-search-form" action="/shop-grid/search" method="GET">
+                            <div class="price-range-wrap">
+                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                    data-min="0" data-max="1000000">
+
+                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+
+
+                                </div>
+                                <div class="range-slider">
+                                    <div class="price-input">
+                                        <input type="hidden" name="name" value="{{name}}">
+                                        <input type="hidden" id="hidden-min-price" value="{{minPrice}}">
+                                        <input type="hidden" id="hidden-max-price" value="{{maxPrice}}">
+                                        <input type="text" id="minamount" name="minPrice">
+                                        <input type="text" id="maxamount" name="maxPrice">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <button id="btn-search-slider" class="btn btn-primary btn-block">Áp dụng</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="sidebar__item">
+                        <div class="latest-product__text">
+                            <h4>Mới nhất</h4>
+                            <div class="latest-product__slider owl-carousel">
+                                <div class="latest-product__slider__item">
+                                    {{#each latestProducts }}
+                                    <a href="/shop-grid/{{this.url}}" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img style="width: 110px;" src="{{this.image}}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>{{this.name}}</h6>
+                                            <span>{{format this.price}}</span>
+                                        </div>
+                                    </a>
+                                    {{/each}}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-7">
+                <div class="product__discount">
+                    <div class="row">
+                            <h2 class="heading-bar__title fs-2 aos-init aos-animate" >SẢN PHẨM MỚI</h2>
+                        <div class="product__discount__slider m-0 owl-carousel">
+                            {{#each products}}
+                            <div class="product-col ">
+                                <div class="item_product_main item_product_main_relative">
+                                    <form action="#" method="post" class="variants product-action product-item-wishlist"
+                                        data-pro="1045645398" data-id="product-actions-1045645398"
+                                        enctype="multipart/form-data">
+                                        <div class="product-thumbnail pos-relative">
+                                            <a class="image_thumb pos-relative embed-responsive embed-responsive-3by4"
+                                                href="#" title="">
+                                                <img class="img-fetured" src="{{this.image}}" alt="">
+                                            </a>
+
+                                        </div>
+                                        <div class="product-info">
+                                            <span class="product-name ">
+                                                <a class="link" href="/shop-grid/{{this.url}}">{{this.name}}</a>
+                                            </span>
+                                            <div class="product-rating">
+                                                <div class="haravan-product-reviews-badge" data-id="1045645398"> </div>
+                                            </div>
+                                            <div class="product-item-cta position-relative">
+                                                <div class="price-box">
+                                                    {{#if this.priceSale}}
+                                                    <span class="price">{{format this.priceSale}}</span>
+                                                    <span class="compare-price">{{format this.price}}</span>
+                                                    {{else}}
+                                                    <span class="price">{{format this.price}}</span>
+                                                    {{/if}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            {{/each}}
+
+                        </div>
+                    </div>
+                    <div class="filter__item">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort">
+                                    <span>Bộ lọc</span>
+                                    <select id="sort-price">
+                                        <option value="0">Mặc định</option>
+                                        <option value="-1">Giá giảm dần</option>
+                                        <option value="1">Giá tăng dần</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="filter__found">
+                                    <h6><span>{{size}}</span> sản phẩm được tìm thấy</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-view-list m-0 row featured__filter">
+
+
+                        {{#each products}}
+
+                        <div class="product-col ">
+                            <div class="item_product_main item_product_main_relative">
+                                <form action="#" method="post" class="variants product-action product-item-wishlist"
+                                    data-pro="1045645398" data-id="product-actions-1045645398"
+                                    enctype="multipart/form-data">
+                                    <div class="product-thumbnail pos-relative">
+                                        <a class="image_thumb pos-relative embed-responsive embed-responsive-3by4"
+                                            href="#" title="">
+                                            <img class="img-fetured" src="{{this.image}}" alt="">
+                                        </a>
+
+                                    </div>
+                                    <div class="product-info">
+                                        <span class="product-name ">
+                                            <a class="link" href="/shop-grid/{{this.url}}">{{this.name}}</a>
+                                        </span>
+                                        <div class="product-rating">
+                                            <div class="haravan-product-reviews-badge" data-id="1045645398"> </div>
+                                        </div>
+                                        <div class="product-item-cta position-relative">
+                                            <div class="price-box">
+                                                {{#if this.priceSale}}
+                                                <span class="price">{{format this.priceSale}}</span>
+                                                <span class="compare-price">{{format this.price}}</span>
+                                                {{else}}
+                                                <span class="price">{{format this.price}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        {{/each}}
+
+                    </div>
+                    <div class="product__pagination center">
+
+                        {{#each leftPage}}
+                        {{#if this.flag}}
+                        <a href="{{this.paginationLink}}"><i class="fas fa-long-arrow-alt-left"></i></a>
+                        {{/if}}
+                        {{/each}}
+
+                        {{#each pagination}}
+                        <a class="{{#if this.flag}} active {{/if}}"
+                            href="{{this.paginationLink}} ">{{this.currentPage}}</a>
+                        {{/each}}
+
+                        {{#each rightPage}}
+                        {{#if this.flag}}
+                        <a href="{{this.paginationLink}}"><i class="fas fa-long-arrow-alt-right"></i></a>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</section>
+<!-- Product Section End -->
+{{#section 'script'}}
+<script>
+    function addShoppingCart(idProduct) {
+        let numProductOder = 1;
+
+        $.ajax({
+            url: `/api/shoppingCart/addShoppingCart`,
+            method: 'POST',
+            data: {
+                idProduct,
+                numProductOder,
+            },
+            success: function (idProduct) {
+                console.log("xong");
+                $('#exampleModal').trigger('focus')
+            }
+        })
+    }
+</script>
+
+{{/section}}
+
+{{#section 'slider_script'}}
+<script>
+    let minPrice = $('#hidden-min-price').val();
+    let maxPrice = $('#hidden-max-price').val();
+    if (minPrice != 0 && maxPrice != 0) {
+        $(".price-range").slider('values', 0, minPrice);
+        $(".price-range").slider('values', 1, maxPrice);
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'VND',
+            minimumFractionDigits: 0
+        })
+        minPrice = formatter.format(minPrice);
+        maxPrice = formatter.format(maxPrice);
+        $("#minamount").val(minPrice);
+        $("#maxamount").val(maxPrice);
+    }
+
+    $("#btn-search-slider").on("click", function () {
+        let minPrice = $('#minamount').val();
+        let maxPrice = $('#maxamount').val();
+
+        minPrice = minPrice.slice(1, minPrice.length);
+        maxPrice = maxPrice.slice(1, maxPrice.length);
+
+        minPrice = parseFloat(minPrice.replace(/,/g, ""));
+        maxPrice = parseFloat(maxPrice.replace(/,/g, ""));
+        $("#minamount").val(minPrice);
+        $("#maxamount").val(maxPrice);
+        $("#slider-search-form").submit();
+    });
+</script>
+{{/section}}
+
+{{#section 'sort_by_price'}}
+<script>
+    const originalHtml = $(".list-product").html();
+
+    const products = $(".");
+    const length = products.length;
+    const listPrice = [];
+    for (let i = 0; i < length; i++) {
+        const product = products[i];
+        let price = $("#price-" + i).html();
+        price = price.slice(0, price.length - 1);
+        price = parseFloat(price.replace(/,/g, ""));
+        listPrice.push({
+            product,
+            price
+        });
+    }
+
+    $("#sort-price").on("change", function () {
+        let sortPrice = $(this).val();
+
+        if (sortPrice == 1) {
+            listPrice.sort(function (a, b) {
+                return a.price - b.price;
+            });
+        } else if (sortPrice == -1) {
+            listPrice.sort(function (a, b) {
+                return b.price - a.price;
+            });
+        } else if (sortPrice == 0) {
+            $(".list-product").empty();
+            $(".list-product").html(originalHtml);
+            return;
+        }
+
+        let html = "";
+        for (let i = 0; i < length; i++) {
+            html += listPrice[i].product.outerHTML;
+        }
+        $(".list-product").empty();
+        $(".list-product").html(html);
+    });
+
+</script>
+{{/section}}

@@ -1,0 +1,162 @@
+<!-- Header Section Begin -->
+<!-- Header Section Begin -->
+<style>.mobile-menu {
+    display: none;
+}
+</style>
+<header class="ega-header ega-pos--relative">
+    <div class="header-wrap">
+       <div id="mobile-menu-toggle" class="toggle-nav btn menu-bar mr-4 ml-0 p-0 d-lg-none d-flex text-white">
+            <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+              <div id="logo" >
+                <a href="/home" class="logo-wrapper ml-lg-6">
+                    <img class="" src="/img/logo.png" style="max-width: 104px; /* height: auto; */ object-fit: cover;" alt="logo Việt Nam" width="150" height="45">
+                </a>
+            </div>
+        <div class="navigation--horizontal d-lg-flex align-items-center d-none">
+            <div class="navigation-wrapper navigation-horizontal-wrapper">
+                <nav>
+                    <ul class="navigation navigation-horizontal list-group list-group-flush scroll">
+                        {{!-- <li class="menu-item list-group-item">
+                            <a href="/" class="menu-item__link" title="TRANG CHỦ">
+                                <span>TRANG CHỦ</span>
+                            </a>
+                        </li> --}}
+
+                         <li class="menu-item list-group-item {{#if home}}active{{/if}}"><a href="/">Trang chủ</a></li>
+                        <li class="menu-item list-group-item {{#if shop}}active{{/if}}"><a href="/shop-grid">Mua sắm</a></li>
+                        {{!-- <li class="menu-item list-group-item {{#if page}}active{{/if}}"><a href="#">Trang</a>
+                          <ul class="menu-item list-group-item header__menu__dropdown ">
+                            <li><a href="/shoping-cart">Giỏ hàng</a></li>
+                            <li><a href="/checkout">Thanh toán</a></li>
+                            <li><a href="/blog-details">Bài viết chi tiết</a></li>
+                          </ul>
+                        </li> --}}
+                        <li class="menu-item list-group-item {{#if blog}}active{{/if}}"><a href="/blog">Bài viết</a></li>
+                        <li class="menu-item list-group-item {{#if aboutUs}}active{{/if}}"><a href="/aboutUs">Về chúng tôi</a></li>
+                        <li class="menu-item list-group-item {{#if contact}}active{{/if}}"><a href="/contact">Liên hệ</a></li>
+                        <!-- Other menu items go here -->
+                    </ul>
+                </nav>
+            </div>
+            <div class="navigation-arrows">
+                <i class="fas fa-chevron-left prev disabled"></i>
+                <i class="fas fa-chevron-right next"></i>
+            </div>
+        </div>
+
+        <div class="header-right ega-d--flex">
+            <div class="icon-action header-right__icons" style="--header-grid-template: repeat(4, 1fr);">
+                <span class="header-icon icon-action__search icon-action__search--desktop toggle_form_search">
+                  <i class="fas fa-search"></i>
+                </span>
+                <div id="icon-account" class="ega-color--inherit header-icon icon-account d-none d-md-block d-lg-block">
+                    <i class="fas fa-user-circle"></i>
+                    <div class="account-action">
+                                     {{#if user}}
+                      <div style="font-size: 14px;">
+                        <i class="fas fa-user-check"></i>
+                        Hello
+                        {{user.name}}
+                      </div>
+                      <a href="/myaccount">
+                        Tài Khoản</a>
+                      <a href="/logout">
+                        Đăng Xuất</a>
+                      {{else}}
+                      <a href="/login">
+                        Đăng nhập</a>
+                      <a href="/register">
+                        Đăng ký</a>
+                      {{/if}}
+                    </div>
+                </div>
+                <div class="mini-cart text-xs-center">
+                    <a class="header-icon cart-count ega-color--inherit" href="/shoping-cart" title="Giỏ hàng">
+                        <i class="fas fa-shopping-cart"><span style="color: rgb(85, 88, 87);"><sub >0</sub></span></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ega-form-search" style="display: none; width: 60%; margin: auto;">
+        <form action="/shop-grid/search" method="GET" class="input-group search-bar custom-input-group" role="search">
+            <input name="name" type="text" placeholder="Bạn muốn mua gì" style="color: black;" value="{{name}}" class="input-group-field auto-search form-control" required="" data-placeholder="Tìm theo tên sản phẩm...; Tìm theo thương hiệu...;" placeholder=" Tìm theo thư">
+            <input type="hidden" name="type" value="product">
+            <span class="input-group-btn btn-action">
+                <button type="submit" aria-label="search" class="btn text-white icon-fallback-text h-100" onclick="toggleSearchDropdown()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </span>
+        </form>
+
+        <div class="search-dropdown">
+            <ul class="search__list pl-0 d-flex list-unstyled mb-0 flex-wrap">
+                <li class="mr-2">
+                    <a id="filter-search-giay-chay-giay-tap-giay-thoi-trang" href="/search?q=tags:(giày chạy, giày tập, giày thời trang)&amp;type=product">giày chạy, giày tập, giày thời trang</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Thêm menu di động (hiển thị khi cần) -->
+        <div class="mobile-menu" >
+           <nav>
+                    <ul class="text-center navigation-horizontal list-group list-group-flush scroll">
+                        <li class="menu-item list-group-item {{#if home}}active{{/if}}"><a class="text-dark" href="/">Trang chủ</a></li>
+                        <li class="menu-item list-group-item {{#if shop}}active{{/if}}"><a class="text-dark" href="/shop-grid">Mua sắm</a></li>
+                        <li class="menu-item list-group-item {{#if blog}}active{{/if}}"><a class="text-dark" href="/blog">Bài viết</a></li>
+                        <li class="menu-item list-group-item {{#if aboutUs}}active{{/if}}"><a class="text-dark" href="/aboutUs">Về chúng tôi</a></li>
+                        <li class="menu-item list-group-item {{#if contact}}active{{/if}}"><a class="text-dark" href="/contact">Liên hệ</a></li>
+                        <!-- Các mục menu khác -->
+                    </ul>
+                </nav>
+        </div>
+
+</header>
+<!-- Header Section End -->
+<script>
+    $(document).ready(function() {
+    var searchDropdownVisible = false;
+
+    function toggleSearchDropdown() {
+        var searchDropdown = $('.ega-form-search');
+        if (searchDropdownVisible) {
+            searchDropdown.hide();
+        } else {
+            searchDropdown.show();
+        }
+        searchDropdownVisible = !searchDropdownVisible;
+    }
+
+    // Bắt sự kiện click trên nút tìm kiếm
+    $('.toggle_form_search').click(function() {
+        toggleSearchDropdown();
+    });
+    // Bắt sự kiện click trên nút hiển thị menu
+    $('#mobile-menu-toggle').click(function() {
+        // Lựa chọn menu di động
+        var mobileMenu = $('.mobile-menu');
+        
+        // Kiểm tra trạng thái hiển thị của menu di động và thực hiện ẩn/hiển thị
+        if (mobileMenu.is(':visible')) {
+            mobileMenu.hide();
+        } else {
+            mobileMenu.show();
+        }
+    });
+});
+
+</script>
+<script>
+
+    $.getJSON("/api/shoppingCart/getShoppingCart", async function (data) {
+    let listProductOrder = data.data
+    console.log("cart ffff", listProductOrder)
+    document.querySelector('.mini-cart .cart-count sub').textContent = listProductOrder.length;
+    })
+</script>

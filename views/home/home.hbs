@@ -1,0 +1,763 @@
+{{>header home="home"}}
+{{!-- hieu ung snowflake start --}}
+
+<style>
+  #snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  .snowflake {
+    padding-left: 15px;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #ebebeb;
+    user-select: none;
+    z-index: 1000;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  .snowflake:hover {
+    cursor: default
+  }
+</style>
+<div id='snowflakeContainer'>
+  <p class='snowflake'>❄</p>
+</div>
+<script style='text/javascript'>
+  //<![CDATA[
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"]; var transformProperty = getSupportedPropertyName(transforms); var snowflakes = []; var browserWidth; var browserHeight; var numberOfSnowflakes = 50; var resetPosition = false; function setup() { window.addEventListener("DOMContentLoaded", generateSnowflakes, false); window.addEventListener("resize", setResetFlag, false) } setup(); function getSupportedPropertyName(b) { for (var a = 0; a < b.length; a++) { if (typeof document.body.style[b[a]] != "undefined") { return b[a] } } return null } function Snowflake(b, a, d, e, c) { this.element = b; this.radius = a; this.speed = d; this.xPos = e; this.yPos = c; this.counter = 0; this.sign = Math.random() < 0.5 ? 1 : -1; this.element.style.opacity = 0.5 + Math.random(); this.element.style.fontSize = 4 + Math.random() * 30 + "px" } Snowflake.prototype.update = function () { this.counter += this.speed / 5000; this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40; this.yPos += Math.sin(this.counter) / 40 + this.speed / 30; setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos)); if (this.yPos > browserHeight) { this.yPos = -50 } }; function setTranslate3DTransform(a, c, b) { var d = "translate3d(" + c + "px, " + b + "px, 0)"; a.style[transformProperty] = d } function generateSnowflakes() { var b = document.querySelector(".snowflake"); var h = b.parentNode; browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var d = 0; d < numberOfSnowflakes; d++) { var j = b.cloneNode(true); h.appendChild(j); var e = getPosition(50, browserWidth); var a = getPosition(50, browserHeight); var c = 5 + Math.random() * 40; var g = 4 + Math.random() * 10; var f = new Snowflake(j, g, c, e, a); snowflakes.push(f) } h.removeChild(b); moveSnowflakes() } function moveSnowflakes() { for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.update() } if (resetPosition) { browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.xPos = getPosition(50, browserWidth); a.yPos = getPosition(50, browserHeight) } resetPosition = false } requestAnimationFrame(moveSnowflakes) } function getPosition(b, a) { return Math.round(-1 * b + Math.random() * (a + 2 * b)) } function setResetFlag(a) { resetPosition = true };
+  //]]>
+</script>
+{{!-- hieu ung snowflake end --}}
+{{!-- slide --}}
+<div class="slide">
+  <div id="wrapper">
+    <section class="slideshow" id="js-header">
+      <div class="slideshow__slide js-slider-home-slide is-current" data-slide="1">
+        <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1"
+          data-position="top" data-target="#js-header">
+          <div class="slideshow__slide-background-load-wrap background-absolute">
+            <div class="slideshow__slide-background-load background-absolute">
+              <div class="slideshow__slide-background-wrap background-absolute">
+                <div class="slideshow__slide-background background-absolute">
+                  <div class="slideshow__slide-image-wrap background-absolute">
+                    <div class="slideshow__slide-image background-absolute"
+                      style="background-image: url('/img/banner/slider1.jpg');">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slideshow__slide js-slider-home-slide is-next" data-slide="2">
+        <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1"
+          data-position="top" data-target="#js-header">
+          <div class="slideshow__slide-background-load-wrap background-absolute">
+            <div class="slideshow__slide-background-load background-absolute">
+              <div class="slideshow__slide-background-wrap background-absolute">
+                <div class="slideshow__slide-background background-absolute">
+                  <div class="slideshow__slide-image-wrap background-absolute">
+                    <div class="slideshow__slide-image background-absolute"
+                      style="background-image: url('/img/banner/slider2.jpg');">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slideshow__slide js-slider-home-slide is-prev" data-slide="3">
+        <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1"
+          data-position="top" data-target="#js-header">
+          <div class="slideshow__slide-background-load-wrap background-absolute">
+            <div class="slideshow__slide-background-load background-absolute">
+              <div class="slideshow__slide-background-wrap background-absolute">
+                <div class="slideshow__slide-background background-absolute">
+                  <div class="slideshow__slide-image-wrap background-absolute">
+                    <div class="slideshow__slide-image background-absolute"
+                      style="background-image: url('/img/banner/slider3.2.jpg');">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+    </section>
+
+  </div>
+</div>
+
+{{!-- slide end --}}
+
+<!-- Banner Begin -->
+
+<!-- Banner End -->
+
+{{!-- sản phẩm bán chạy --}}
+<div class="slide-show-product">
+  <div class="section-title pt-5" data-aos="zoom-in">
+    <h2>SẢN PHẨM MỚI</h2>
+  </div>
+  <div class="custom-slider">
+    {{!-- <div class="custom-box">1</div> --}}
+    {{#each this.latestProducts}}
+    <div class="item_product_main item_product_main_relative">
+      <form action="#" method="post" class="variants product-action product-item-wishlist" data-pro="1045645398"
+        data-id="product-actions-1045645398" enctype="multipart/form-data">
+        <div class="product-thumbnail pos-relative">
+          <a class="image_thumb pos-relative embed-responsive embed-responsive-3by4" href="#" title="">
+            <img class="img-fetured" src="{{this.image}}" alt="">
+          </a>
+        </div>
+        <div class="product-info">
+          <span class="product-name ">
+            <a class="link" href="/shop-grid/{{this.url}}">{{this.name}}</a>
+          </span>
+          <div class="product-rating">
+            <div class="haravan-product-reviews-badge" data-id="1045645398"> </div>
+          </div>
+          <div class="product-item-cta position-relative">
+            <div class="price-box">
+              <span class="price">{{format this.price}}</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    {{/each}}
+
+  </div>
+</div>
+
+{{!-- sản phẩm bán chạy --}}
+
+{{!-- banner --}}
+<section class="section awe-section-6 section-section_imgtext_1 mt-2">
+  <section class="section_imgtext section style1 left-text">
+    <div class="container card border-0 mt-4">
+      <div class="imgtext_body d-flex banner-home6-bottom space-80">
+        <div class="col-md-6 col-sm-6 col-xs-6 overflow-hidden" data-aos="fade-up-right">
+          <a class="hover-effect-images-ver2" href="#" title="Banner">
+            <img
+              src="https://images.pexels.com/photos/5368965/pexels-photo-5368965.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Banner">
+            <div class="text">
+              <h3>collection</h3>
+              <h4>for real <span>men</span></h4>
+            </div>
+          </a>
+        </div>
+        <!-- End col-md-6   -->
+        <div class="col-md-6 col-sm-6 col-xs-6 overflow-hidden" data-aos="fade-up-left">
+          <a class="hover-effect-images-ver2" href="#" title="Banner">
+            <img
+              src="https://images.pexels.com/photos/1272368/pexels-photo-1272368.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Banner">
+            <div class="text">
+              <h3>do you love resince?</h3>
+              <p>choose from thouthand products</p>
+              <h4>check it now!</h4>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+{{!-- banner end --}}
+
+<!-- Categories Section Begin -->
+{{!-- section start --}}
+{{!-- <section class="section-index-policy">
+  <div class="container">
+    <div class="policy-bgwhite">
+      <div class="row list-policy">
+        <div class="col-md-12 col-sm-12 col-xs-12 policy-item">
+          <div class="policy-item__inner">
+            <div class="policy_img">
+              <img src="https://file.hstatic.net/200000473357/file/support_57d41c2875b64a4c8d196360c5c27a8f.png"
+                alt="Giao hàng toàn quốc">
+            </div>
+            <h4 class="policy-title">
+              Giao hàng toàn quốc
+            </h4>
+            <p>
+              63 tỉnh thành
+            </p>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 policy-item">
+          <div class="policy-item__inner">
+            <div class="policy_img">
+              <img src="https://file.hstatic.net/200000473357/file/free-delivery_a9adf22b4af04b24bb5a157cbdcaed9a.png"
+                alt="Thử giày tại nhà">
+            </div>
+            <h4 class="policy-title">
+              Thử giày tại nhà
+            </h4>
+            <p>
+              Trước khi thanh toán
+            </p>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 policy-item">
+          <div class="policy-item__inner">
+            <div class="policy_img">
+              <img src="https://file.hstatic.net/200000473357/file/exchange_8827b1d6e67b4a8ca78859d578475b3e.png"
+                alt="Đổi trả linh hoạt">
+            </div>
+            <h4 class="policy-title">
+              Đổi trả linh hoạt
+            </h4>
+            <p>
+              Trong vòng 30 ngày
+            </p>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 policy-item">
+          <div class="policy-item__inner">
+            <div class="policy_img">
+              <img src="https://file.hstatic.net/200000473357/file/warranty_415fba35a84a479f81a889b517f4c130.png"
+                alt="Bảo hành miễn phí">
+            </div>
+            <h4 class="policy-title">
+              Bảo hành miễn phí
+            </h4>
+            <p>
+              Suốt quá trình sử dụng
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> --}}
+{{!-- //sectionend --}}
+<!-- Featured Section Begin -->
+<section class="featured spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title" data-aos="zoom-out">
+          <h2>SẢN PHẨM BÁN CHẠY</h2>
+        </div>
+      </div>
+    </div>
+    <div class="recent-view-list m-0 row featured__filter">
+
+      {{#each this.latestProducts}}
+      <div class="product-col mix ">
+        <div class="item_product_main item_product_main_relative">
+          <form action="#" method="post" class="variants product-action product-item-wishlist" data-pro="1045645398"
+            data-id="product-actions-1045645398" enctype="multipart/form-data" data-aos="fade-down"
+            data-aos-easing="linear" data-aos-duration="1500">
+            <div class="product-thumbnail pos-relative">
+              <a class="image_thumb pos-relative embed-responsive embed-responsive-3by4" href="#" title="">
+                <img class="img-fetured" src="{{this.image}}" alt="">
+              </a>
+            </div>
+            <div class="product-info">
+              <span class="product-name ">
+                <a class="link" href="/shop-grid/{{this.url}}">{{this.name}}</a>
+              </span>
+              <div class="product-rating">
+                <div class="haravan-product-reviews-badge" data-id="1045645398"> </div>
+              </div>
+              <div class="product-item-cta position-relative">
+                <div class="price-box">
+                  <span class="price">{{format this.price}}</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {{/each}}
+
+    </div>
+  </div>
+</section>
+
+
+
+{{!-- banner thể thao --}}
+<section class="section awe-section-10 section-section_lookbook">
+  <section class="section_lookbook">
+    <div class="container">
+      <h2 class="heading-bar__title" data-aos="fade-down">THỂ THAO T.SPORT</h2>
+      <div class="lookbooks-container row">
+        <div class="col-xl-4 col-md-6 col-12 lookbooks-column" data-aos="fade-down">
+          <div class="lookbooks-banner lookbooks-1">
+            <div class="lookbooks-banner__photo">
+              <div class="lookbook-image-wrap">
+                <a href="https://anta.com.vn/collections/giay-chay-the-thao-nam-anta">
+                  <img class="img-fluid m-auto object-contain mh-100 w-auto" width="520" height="675"
+                    src="//theme.hstatic.net/1000150581/1001058888/14/lookbook_1_image.jpg?v=289"
+                    alt="lookbook_1_image.jpg">
+                </a>
+              </div>
+            </div>
+            <div class="loookbook-info text-center mt-3">
+              <h3>RUNNING</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-12 lookbooks-column" data-aos="zoom-in">
+          <div class="lookbooks-banner lookbooks-2">
+            <div class="lookbooks-banner__photo">
+              <div class="lookbook-image-wrap">
+                <a href="https://anta.com.vn/collections/giay-tap-the-thao-nam-anta">
+                  <img class="img-fluid m-auto object-contain mh-100 w-auto" width="520" height="675"
+                    src="//theme.hstatic.net/1000150581/1001058888/14/lookbook_2_image.jpg?v=289"
+                    alt="lookbook_2_image.jpg">
+                </a>
+              </div>
+            </div>
+            <div class="loookbook-info text-center mt-3">
+              <h3>TRAINING</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-12 lookbooks-column" data-aos="fade-right">
+          <div class="lookbooks-banner lookbooks-3">
+            <div class "lookbooks-banner__photo">
+              <div class="lookbook-image-wrap">
+                <a href="https://anta.com.vn/collections/giay-bong-ro-nam-anta">
+                  <img class="img-fluid m-auto object-contain mh-100 w-auto" width="520" height="675"
+                    src="//theme.hstatic.net/1000150581/1001058888/14/lookbook_3_image.jpg?v=289"
+                    alt="lookbook_3_image.jpg">
+                </a>
+              </div>
+            </div>
+            <div class="loookbook-info text-center mt-3">
+              <h3>BASKETBALL</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+{{!-- banner thể thao --}}
+
+{{!-- các nền tảng mxh --}}
+<section class="section awe-section-11 section-section_brand">
+  <section class="section_brand section" style="--item-display: 6">
+    <div class="container card border-0">
+      <div class="title_module_main heading-bar mb-4">
+        <h2 class="heading-bar__title">
+          <a class="link" href="" title="NỀN TẢNG ONLINE" data-aos="fade-down">NỀN TẢNG ONLINE</a>
+        </h2>
+      </div>
+      <div class="row mx-0 hrz-scroll text-center flex-nowrap js-slider justify-content-around" id="slide_brand">
+        <div class="item" data-aos="fade-left">
+          <a href="#" target="_blank" class="brand-item pos-relative d-flex align-items-center aspect-ratio"
+            title="Facebook Anta" style="--width:157; --height:67">
+            <img class="img-fluid m-auto object-contain mh-100 w-auto"
+              src="//theme.hstatic.net/1000150581/1001058888/14/brand_1.jpg?v=289" alt="brand_1_title" width="157"
+              height="67">
+          </a>
+        </div>
+        <div class="item" data-aos="fade-left">
+          <a href="#" target="_blank" class="brand-item pos-relative d-flex align-items-center aspect-ratio"
+            title="Zalo Anta" style="--width:157; --height:67">
+            <img class="img-fluid m-auto object-contain mh-100 w-auto"
+              src="//theme.hstatic.net/1000150581/1001058888/14/brand_2.jpg?v=289" alt="brand_2_title" width="157"
+              height="67">
+          </a>
+        </div>
+        <div class="item" data-aos="zoom-out">
+          <a href="#" target="_blank" class="brand-item pos-relative d-flex align-items-center aspect-ratio"
+            title="Shopee Anta" style="--width:157; --height:67">
+            <img class="img-fluid m-auto object-contain mh-100 w-auto"
+              src="//theme.hstatic.net/1000150581/1001058888/14/brand_3.jpg?v=289" alt="brand_3_title" width="157"
+              height="67">
+          </a>
+        </div>
+        <div class="item" data-aos="fade-right">
+          <a href="#" target="_blank" class="brand-item pos-relative d-flex align-items-center aspect-ratio"
+            title="Tiki Anta" style="--width:157; --height:67">
+            <img class="img-fluid m-auto object-contain mh-100 w-auto"
+              src="//theme.hstatic.net/1000150581/1001058888/14/brand_4.jpg?v=289" alt="brand_4_title" width="157"
+              height="67">
+          </a>
+        </div>
+        <div class="item" data-aos="fade-right">
+          <a href="#" target="_blank" class="brand-item pos-relative d-flex align-items-center aspect-ratio"
+            title="Lazada Anta" style="--width:157; --height:67">
+            <img class="img-fluid m-auto object-contain mh-100 w-auto"
+              src="//theme.hstatic.net/1000150581/1001058888/14/brand_5.jpg?v=289" alt="brand_5_title" width="157"
+              height="67">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+{{!-- các nền tảng mxh end --}}
+
+<!-- Blog Section Begin -->
+
+<section class="from-blog spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title from-blog__title" data-aos="zoom-in">
+          <h2>BLOG</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row" data-aos="fade-down">
+      {{#each blogs}}
+      <div class="col-lg-4 col-md-4 col-sm-6" style=" padding: 10px;">
+        <div class="blog__item">
+          <a class="blog__item__pic" href="/blog/{{this._id}}">
+            <img src="/img/blog/{{this.image}}" alt="" style="width: 100%; height: 200px;object-fit: cover;"
+              class="img-fluid" />
+          </a>
+          <div class="blog__item__text">
+            <ul class="list-unstyled">
+              <li><i class="fa fa-calendar-o"></i> {{this.date}}</li>
+            </ul>
+            <h5><a href="/blog/{{this._id}}">{{this.title}}</a></h5>
+            <p class="text-secondary">
+              {{this.truncatedContent}}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {{/each}}
+
+
+
+    </div>
+  </div>
+</section>
+
+{{!-- album --}}
+<section class="sectionLookbooks ">
+  <div class="container">
+    <h2 class="hTitle" data-aos="zoom-out">Bộ sưu tập</h2>
+    <div class="row lookbooks-container owlCarousel-style" data-carousel="true">
+      <div class="col-md-6 col-sm-12 col-xs-12 lookbooks-column" data-aos="fade-left">
+        <div class="lookbooks-banner  lookbooks-banner-1">
+          <div class="lookbooks-banner__photo">
+            <a>
+              <picture>
+                <img src="https://file.hstatic.net/200000473357/file/bia_bst_-_b2s_506f467be2ff4f779b17345b69db9f78.png"
+                  alt="">
+              </picture>
+            </a>
+          </div>
+          <div class="lookbooks-banner__detail ">
+          </div>
+        </div>
+      </div>
+      <div class="book-right col-md-6 col-sm-12 col-xs-12">
+        <div class="  lookbooks-column" data-aos="fade-right">
+          <div class="lookbooks-banner  lookbooks-banner-2">
+            <div class="lookbooks-banner__photo">
+              <a>
+                <picture>
+                  <img src="https://file.hstatic.net/200000473357/file/bst_-_b2s_2_2e70a1699ece44bca4c52e5bbafc5132.png"
+                    alt="">
+                </picture>
+              </a>
+
+            </div>
+            <div class="lookbooks-banner__detail ">
+            </div>
+          </div>
+        </div>
+        <div class="  lookbooks-column" data-aos="fade-right">
+          <div class="lookbooks-banner  lookbooks-banner-3">
+            <div class="lookbooks-banner__photo">
+              <a>
+                <picture>
+                  <img src="https://file.hstatic.net/200000473357/file/bst_-_b2s_d37d0678f8f84c7da0911a31178e0b16.png"
+                    alt="">
+                </picture>
+              </a>
+            </div>
+            <div class="lookbooks-banner__detail ">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Blog Section End -->
+
+{{#section 'script'}}
+<script>
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const paymentSuccess = urlParams.get('paymentSuccess');
+
+    if (paymentSuccess === "true") {
+
+      Swal.fire({
+        title: "Thanh toán thành công!",
+        text: "You clicked the button!",
+        icon: "success"
+      });
+    }
+
+  });
+
+</script>
+{{!-- slide show sale --}}
+<script>
+
+  $('.custom-slider').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      }
+    ]
+  });
+</script>
+{{!-- slide show end --}}
+<script>
+  function addShoppingCart(idProduct) {
+    let numProductOder = 1;
+
+    $.ajax({
+      url: `/api/shoppingCart/addShoppingCart`,
+      method: 'POST',
+      data: {
+        idProduct,
+        numProductOder,
+      },
+      success: function (idProduct) {
+        console.log("xong");
+        $('#exampleModal').trigger('focus')
+      }
+    })
+  }
+</script>
+{{!-- slider --}}
+<script>
+  const $window = $(window);
+  const $body = $('body');
+
+  class Slideshow {
+    constructor(userOptions = {}) {
+      const defaultOptions = {
+        $el: $('.slideshow'),
+        showArrows: false,
+        showPagination: true,
+        duration: 10000,
+        autoplay: true
+      }
+
+      let options = Object.assign({}, defaultOptions, userOptions);
+
+      this.$el = options.$el;
+      this.maxSlide = this.$el.find($('.js-slider-home-slide')).length;
+      this.showArrows = this.maxSlide > 1 ? options.showArrows : false;
+      this.showPagination = options.showPagination;
+      this.currentSlide = 1;
+      this.isAnimating = false;
+      this.animationDuration = 1200;
+      this.autoplaySpeed = options.duration;
+      this.interval;
+      this.$controls = this.$el.find('.js-slider-home-button');
+      this.autoplay = this.maxSlide > 1 ? options.autoplay : false;
+
+      this.$el.on('click', '.js-slider-home-next', (event) => this.nextSlide());
+      this.$el.on('click', '.js-slider-home-prev', (event) => this.prevSlide());
+      this.$el.on('click', '.js-pagination-item', event => {
+        if (!this.isAnimating) {
+          this.preventClick();
+          this.goToSlide(event.target.dataset.slide);
+        }
+      });
+
+      this.init();
+    }
+
+    init() {
+      this.goToSlide(1);
+      if (this.autoplay) {
+        this.startAutoplay();
+      }
+
+      if (this.showPagination) {
+        let paginationNumber = this.maxSlide;
+        let pagination = '<div class="pagination"><div class="container">';
+
+        for (let i = 0; i < this.maxSlide; i++) {
+          let item = `<span class="pagination__item js-pagination-item ${i === 0 ? 'is-current' : ''}" data-slide=${i + 1}>${i + 1}</span>`;
+          pagination = pagination + item;
+        }
+
+        pagination = pagination + '</div></div>';
+
+        this.$el.append(pagination);
+      }
+    }
+
+    preventClick() {
+      this.isAnimating = true;
+      this.$controls.prop('disabled', true);
+      clearInterval(this.interval);
+
+      setTimeout(() => {
+        this.isAnimating = false;
+        this.$controls.prop('disabled', false);
+        if (this.autoplay) {
+          this.startAutoplay();
+        }
+      }, this.animationDuration);
+    }
+
+    goToSlide(index) {
+      this.currentSlide = parseInt(index);
+
+      if (this.currentSlide > this.maxSlide) {
+        this.currentSlide = 1;
+      }
+
+      if (this.currentSlide === 0) {
+        this.currentSlide = this.maxSlide;
+      }
+
+      const newCurrent = this.$el.find('.js-slider-home-slide[data-slide="' + this.currentSlide + '"]');
+      const newPrev = this.currentSlide === 1 ? this.$el.find('.js-slider-home-slide').last() : newCurrent.prev('.js-slider-home-slide');
+      const newNext = this.currentSlide === this.maxSlide ? this.$el.find('.js-slider-home-slide').first() : newCurrent.next('.js-slider-home-slide');
+
+      this.$el.find('.js-slider-home-slide').removeClass('is-prev is-next is-current');
+      this.$el.find('.js-pagination-item').removeClass('is-current');
+
+      if (this.maxSlide > 1) {
+        newPrev.addClass('is-prev');
+        newNext.addClass('is-next');
+      }
+
+      newCurrent.addClass('is-current');
+      this.$el.find('.js-pagination-item[data-slide="' + this.currentSlide + '"]').addClass('is-current');
+    }
+
+    nextSlide() {
+      this.preventClick();
+      this.goToSlide(this.currentSlide + 1);
+    }
+
+    prevSlide() {
+      this.preventClick();
+      this.goToSlide(this.currentSlide - 1);
+    }
+
+    startAutoplay() {
+      this.interval = setInterval(() => {
+        if (!this.isAnimating) {
+          this.nextSlide();
+        }
+      }, this.autoplaySpeed);
+    }
+
+    destroy() {
+      this.$el.off();
+    }
+  }
+
+  (function () {
+    let loaded = false;
+    let maxLoad = 3000;
+
+    function load() {
+      const options = {
+        showPagination: true
+      };
+
+      let slideShow = new Slideshow(options);
+    }
+
+    function addLoadClass() {
+      $body.addClass('is-loaded');
+
+      setTimeout(function () {
+        $body.addClass('is-animated');
+      }, 600);
+    }
+
+    $window.on('load', function () {
+      if (!loaded) {
+        loaded = true;
+        load();
+      }
+    });
+
+    setTimeout(function () {
+      if (!loaded) {
+        loaded = true;
+        load();
+      }
+    }, maxLoad);
+
+    addLoadClass();
+  })();
+
+</script>
+
+
+{{/section}}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='shortcut icon' type="image/png" href='/img/logo.png' />
+    <title>T_Sport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+
+
+    <!-- Bootstrap & Other CSS Styles -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/elegant-icons.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/slicknav.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/sanpham.css">
+    <link rel="stylesheet" href="/css/slider.css">
+    <link rel="stylesheet" href="/css/lib.css">
+
+    <!-- Font Awesome & Google Analytics -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-217415535-1"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+    {{!-- sweetaleart2 --}}
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
+
+    {{!-- toast --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    {{!--
+    <link rel="stylesheet" href="/css/blog-detail.css" type="text/css" /> --}}
+    {{!-- sweetalert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-217415535-1');
+    </script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    {{!-- toasrt --}}
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
+
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/logo.png" alt=""></a>
+        </div>
+
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__auth">
+                {{!-- <a href="#"><i class="fa fa-user"></i> Login</a> --}}
+                {{#if user}}
+                <a href="#" style="cursor: auto;">
+                    <i class="fas fa-user-check" style="margin-left: 10px;"></i>
+                    Hello
+                    {{user.name}}
+                </a>
+                <a href="/myaccount">
+                    <i class="fa fa-user" style="margin-left: 10px;"></i>
+                    Tài Khoản</a>
+                <a href="/logout">
+                    <i class="fas fa-sign-out-alt" style="margin-left: 10px;"></i>
+                    Đăng Xuất</a>
+                {{else}}
+                <a href="/login">
+                    <i class="fas fa-sign-in-alt" style="margin-left: 10px;"></i>
+                    Đăng nhập</a>
+                <a href="/register"><i class="fa fa-user-plus" style="margin-left: 10px;"></i>
+                    Đăng ký</a>
+                {{/if}}
+            </div>
+
+        </div>
+
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="/">Trang chủ</a></li>
+                <li><a href="/shop-grid">Mua sắm</a></li>
+                {{!-- <li><a href="#">Trang</a>
+                    <ul class="header__menu__dropdown" style="font-size: 12px;">
+                        <li><a href="/shoping-cart">Giỏ hàng</a></li>
+                        <li><a href="/checkout">Thanh toán</a></li>
+                        <li><a href="/blog-details">Bài viết chi tiết</a></li>
+                    </ul>
+                </li> --}}
+                <li><a href="/blog">Bài viết</a></li>
+                <li><a href="/contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hcmus@hcmus.edu.vn</li>
+                <li style="font-size: 12px;">Giao hàng miễn phí cho các đơn hàng trên 100K</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+
+
+
+
+    {{{body}}}
+
+    {{>footer}}
+
+    <!-- Js Plugins -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
+    {{{_sections.slider_script}}}
+    {{{_sections.script}}}
+    {{{_sections.sort_by_price}}}
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "100545349204744");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v12.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</body>
+
+</html>

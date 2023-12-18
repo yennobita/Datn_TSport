@@ -1,0 +1,325 @@
+{{>header aboutUs="aboutUs"}}
+{{!-- hieu ung snowflake start --}}
+<style>
+  #snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  .snowflake {
+    padding-left: 15px;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #ebebeb;
+    user-select: none;
+    z-index: 1000;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  .snowflake:hover {
+    cursor: default
+  }
+</style>
+<div id='snowflakeContainer'>
+  <p class='snowflake'>❄</p>
+</div>
+<script style='text/javascript'>
+  //<![CDATA[
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"]; var transformProperty = getSupportedPropertyName(transforms); var snowflakes = []; var browserWidth; var browserHeight; var numberOfSnowflakes = 50; var resetPosition = false; function setup() { window.addEventListener("DOMContentLoaded", generateSnowflakes, false); window.addEventListener("resize", setResetFlag, false) } setup(); function getSupportedPropertyName(b) { for (var a = 0; a < b.length; a++) { if (typeof document.body.style[b[a]] != "undefined") { return b[a] } } return null } function Snowflake(b, a, d, e, c) { this.element = b; this.radius = a; this.speed = d; this.xPos = e; this.yPos = c; this.counter = 0; this.sign = Math.random() < 0.5 ? 1 : -1; this.element.style.opacity = 0.5 + Math.random(); this.element.style.fontSize = 4 + Math.random() * 30 + "px" } Snowflake.prototype.update = function () { this.counter += this.speed / 5000; this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40; this.yPos += Math.sin(this.counter) / 40 + this.speed / 30; setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos)); if (this.yPos > browserHeight) { this.yPos = -50 } }; function setTranslate3DTransform(a, c, b) { var d = "translate3d(" + c + "px, " + b + "px, 0)"; a.style[transformProperty] = d } function generateSnowflakes() { var b = document.querySelector(".snowflake"); var h = b.parentNode; browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var d = 0; d < numberOfSnowflakes; d++) { var j = b.cloneNode(true); h.appendChild(j); var e = getPosition(50, browserWidth); var a = getPosition(50, browserHeight); var c = 5 + Math.random() * 40; var g = 4 + Math.random() * 10; var f = new Snowflake(j, g, c, e, a); snowflakes.push(f) } h.removeChild(b); moveSnowflakes() } function moveSnowflakes() { for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.update() } if (resetPosition) { browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.xPos = getPosition(50, browserWidth); a.yPos = getPosition(50, browserHeight) } resetPosition = false } requestAnimationFrame(moveSnowflakes) } function getPosition(b, a) { return Math.round(-1 * b + Math.random() * (a + 2 * b)) } function setResetFlag(a) { resetPosition = true };
+  //]]>
+</script>
+{{!-- hieu ung snowflake end --}}
+<!-- Breadcrumb Section Begin -->
+<section class="bread-crumb mb-3">
+	<span class="crumb-border"></span>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 a-left">
+				<ul class="breadcrumb m-0 px-0">					
+					<li>
+						<a href="/" target="_self"><span>Trang chủ</span></a>
+						<span class="mr_lr">&nbsp;/&nbsp;</span>		
+					</li>
+					
+					<li class="active">
+						<span>Về chúng tôi</span>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Breadcrumb Section End -->
+<main id="main" class="">
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="pagetitle p-2">TỔNG QUAN VỀ CHÚNG TÔI</h2>
+            <p class="p-2">T.Sport tập trung chủ yếu vào thị trường thời trang thể thao với những sản phẩm chất lượng cao ,
+                            phong cách chuyên nghiệp và thiết kế thời thượng. T.Sport đang ngày càng khẳng định vị thế
+                            thương hiệu thời trang thể thao tiên phong&nbsp;tại thị trường Việt Nam. T.Sport luôn gữ vững
+                            sứ mệnh “ Khơi dậy tinh thần thể thao – vượt qua chính mình của mỗi con người”</p>
+        </div>
+    </div>
+
+<section class="page section">
+    <div class="container card py-2">
+        <div class="wrap_background_aside margin-bottom-40">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="heading-bar">
+                        <h1 class="title_page">Giới thiệu</h1>
+                    </div>
+
+                    <div class="content-page rte py-3">
+
+
+                        <ul style="text-align: justify;">
+                            <li>
+                                <p class="p-2">Đội nhóm mong muốn đem lại cho người tiêu dùng Việt Nam
+                                    những sản phẩm thời trang và thể thao với tiêu chí ba tốt:</p>
+                            </li>
+                            <li>
+                                <p class="p-2">Phong cách</p>
+                            </li>
+                            <li>
+                                <p class="p-2">Chất lượng&nbsp;</p>
+                            </li>
+                            <li>
+                                <p class="p-2">Dịch vụ hoàn hảo</p>
+                            </li>
+                        </ul>
+                        <p class="p-2" style="text-align: justify;"><strong>&nbsp;<em>Tầm nhìn:</em></strong></p>
+                        <ul style="text-align: justify;">
+                            <li>
+                                <p class="p-2">Với nỗ lực không ngừng để trở thành tiên phong&nbsp;trong lĩnh vực
+                                    bán lẻ mặt hàng thời trang và thể thao. Công ty Cổ Phần An Việt Sông Hồng đang cố
+                                    gắng vươn ra ngoài khu vực và góp phần cho sự phát triển kinh tế của đất nước.</p>
+                            </li>
+                        </ul>
+                        <p class="p-2" style="text-align: justify;"><strong><em>Sứ mệnh:</em></strong></p>
+                        <ul style="text-align: justify;">
+                            <li>
+                                <p class="p-2">Mang đến cho người tiêu dùng những sản phẩm tốt, bảo vệ lợi ích của khách hàng . Đem
+                                    lại những giá trị tốt đẹp cho cộng đồng xã hội, nâng cao chất lượng cuộc sống của
+                                    các thành viên về cả vật chất và tinh thần.</p>
+                            </li>
+                        </ul>
+                        <p class="p-2" style="text-align: justify;"><strong>&nbsp;<em>Giá trị cốt lõi:</em></strong></p>
+                        <ul>
+                            <li>
+                                <p class="p-2" style="text-align: justify;">Chúng tôi làm việc với tinh thần đoàn kết giữa các nhân
+                                    viên trong công ty và hợp tác đối với khách hàng để đạt được mục tiêu thành công, đề
+                                    cao tinh thần tận tâm và tinh thần trách nhiệm với từng sản phẩm mình bán ra, từng
+                                    bước đưa công ty tới sự chuyên nghiệp trong từng sịch vụ và tiêu chuẩn hóa mọi quy
+                                    trình làm việc, sáng tạo và đổi mới để tìm ra những dịch vụ tốt hơn. Đó chính là nền
+                                    tảng cơ bản để chúng tôi thực hiện nhiệm vụ của mình.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <div class="row row-gt1">
+        <div class="col-12">
+            <div class="row" id="">
+                <div class="col-sm-4">
+                    <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                        <div class="box-image">
+                            <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/con-dau-hinh-tuong-nang-cong-chua-keo-ngot-sam-lan-dau-ho-bao-voi-trang-phuc-bo-na-tho-8e2e63678d2764793d36-1584593776-885-width700height466.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="box-text text-center">
+                            <h4 class="p-2">TẦM NHÌN CỦA CHÚNG TÔI</h4>
+                            <p class="p-2">Donec libero dolor, tincidunt id laoreet vitae, ullamcorper eu tortor. Maecenas pellentesque, dui vitae iaculis mattis, tortor nisi faucibus magna, vitae</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                        <div class="box-image">
+                            <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/10-thương-hiệu-thời-trang-xa-hoa-nhất-trên-thế-giới-Burberry-elle-vietnam.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="box-text text-center">
+                            <h4 class="p-2">CHÚNG TÔI THỰC SỰ LÀM GÌ?</h4>
+                            <p class="p-2">Donec libero dolor, tincidunt id laoreet vitae, ullamcorper eu tortor. Maecenas pellentesque, dui vitae iaculis mattis, tortor nisi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                        <div class="box-image">
+                            <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/dien-do-viet-nam-diem-my-9x-van-khien-hang-trieu-trai-tim-tai-seoul-fashion-week-rung-dong-3-1508344242-width700height466.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="box-text text-center">
+                            <h4 class="p-2">LỊCH SỬ BẮT ĐẦU</h4>
+                            <p class="p-2">Donec libero dolor, tincidunt id laoreet vitae, ullamcorper eu tortor. Maecenas pellentesque, dui vitae iaculis mattis, tortor nisi faucibus magna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>ĐỘI NGŨ CỦA CHÚNG TÔI</h2>
+            <div class="gap-element clearfix" style="display: block; height: auto; margin-top: 40px;"></div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-6 col-md-4">
+            <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                <div class="box-image">
+                    <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/222038517_586110522374036_8997920533858154844_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MPDQnr1J2LIAX9C9XLw&_nc_ht=scontent.fdad3-4.fna&oh=00_AfAhc9M2LkUU5wgKVIBzzudld5c-9A1kpShYiDutTnfkTQ&oe=6536E712" class="img-fluid" alt="">
+                </div>
+                <div class="pt-2 pb-4 box-text text-center">
+                    <h4 class="p-2" class="team-name">Nguyễn Bình Yên</h4>
+                    <div class="Team-description">Trưởng nhóm</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                <div class="box-image">
+                    <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/222038517_586110522374036_8997920533858154844_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MPDQnr1J2LIAX9C9XLw&_nc_ht=scontent.fdad3-4.fna&oh=00_AfAhc9M2LkUU5wgKVIBzzudld5c-9A1kpShYiDutTnfkTQ&oe=6536E712" class="img-fluid" alt="">
+                </div>
+                <div class="pt-2 pb-4 box-text text-center">
+                    <h4 class="p-2" class="team-name">Diệp Minh Hiếu</h4>
+                    <div class="Team-description">Thành viên</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                <div class="box-image">
+                    <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/222038517_586110522374036_8997920533858154844_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MPDQnr1J2LIAX9C9XLw&_nc_ht=scontent.fdad3-4.fna&oh=00_AfAhc9M2LkUU5wgKVIBzzudld5c-9A1kpShYiDutTnfkTQ&oe=6536E712" class="img-fluid" alt="">
+                </div>
+                <div class="pt-2 pb-4 box-text text-center">
+                    <h4 class="p-2" class="team-name">Phan Văn Linh</h4>
+                    <div class="Team-description">Thành viên</div>
+                </div>
+            </div>
+        </div>
+          <div class="col-sm-6 col-md-4">
+            <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                <div class="box-image">
+                    <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/222038517_586110522374036_8997920533858154844_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MPDQnr1J2LIAX9C9XLw&_nc_ht=scontent.fdad3-4.fna&oh=00_AfAhc9M2LkUU5wgKVIBzzudld5c-9A1kpShYiDutTnfkTQ&oe=6536E712" class="img-fluid" alt="">
+                </div>
+                <div class="pt-2 pb-4 box-text text-center">
+                    <h4 class="p-2" class="team-name">Trần Phú Quốc</h4>
+                    <p class="p-2">Thành viên</p>
+                </div>
+            </div>
+        </div>
+          <div class="col-sm-6 col-md-4">
+            <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                <div class="box-image">
+                    <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/222038517_586110522374036_8997920533858154844_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MPDQnr1J2LIAX9C9XLw&_nc_ht=scontent.fdad3-4.fna&oh=00_AfAhc9M2LkUU5wgKVIBzzudld5c-9A1kpShYiDutTnfkTQ&oe=6536E712" class="img-fluid" alt="">
+                </div>
+                <div class="pt-2 pb-4 box-text text-center">
+                    <h4 class="p-2" class="team-name">Thái Thị Huế</h4>
+                    <p class="p-2">Thành viên</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="section-content relative">
+    <div class="container">
+        <h2 class="text-center">DỊCH VỤ CỦA CHÚNG TÔI</h2>
+        <div class="clearfix" style="padding-top: 30px;"></div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                    <div class="box-image" style="width: 15%; margin:12px">
+                        <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/taxi-1.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="box-text text-center">
+                        <h4>GIAO HÀNG TRÊN TOÀN THẾ GIỚI</h4>
+                        <p>Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                    <div class="box-image" style="width: 15%; margin:12px">
+                        <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/smile.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="box-text text-center">
+                        <h4>HỔ TRỢ</h4>
+                        <p>Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                    <div class="box-image" style="width: 15%; margin:12px">
+                        <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/supermarket.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class= "box-text text-center">
+                        <h4>KIỂM TRA AN TOÀN</h4>
+                        <p>Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                    <div class="box-image" style="width: 15%; margin:12px">
+                        <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/global.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="box-text text-center">
+                        <h4>ĐA NGÔN NGỮ</h4>
+                        <p>Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                    <div class="box-image" style="width: 15%; margin:12px">
+                        <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/smartphone.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="box-text text-center">
+                        <h4>ĐÁP ỨNG ĐẦY ĐỦ</h4>
+                        <p>Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="box has-hover has-hover box-text-bottom text-center" style="    display: flex;flex-direction: column;align-items: center;">
+                    <div class="box-image" style="width: 15%; margin:12px">
+                        <img src="https://mauweb.monamedia.net/movic/wp-content/uploads/2020/04/pen.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="box-text text-center">
+                        <h4>ĐA DẠNG</h4>
+                        <p>Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+</main>
