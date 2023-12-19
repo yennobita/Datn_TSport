@@ -8,7 +8,7 @@ const ShoppingCart = require("../models/ShoppingCart");
 const User = require("../models/User");
 const CheckOut = require("../models/CheckOut");
 const ProductOrder = require("../models/ProductOrder");
-
+const env = require("dotenv").config();
 paypal.configure({
   mode: "sandbox", //sandbox or live
   client_id: config1.client_id,
@@ -52,8 +52,8 @@ function postPayment(req, res) {
       payment_method: "paypal",
     },
     redirect_urls: {
-      return_url: "http://localhost:5000/success",
-      cancel_url: "http://localhost:5000/cancel",
+      return_url: process.env.CLIENT_URL + "/success",
+      cancel_url: process.env.CLIENT_URL+ "/cancel",
     },
     transactions: [
       {

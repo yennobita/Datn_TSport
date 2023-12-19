@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
-
+const env = require("dotenv").config();
 const User = require("../models/User");
 
 passport.use(
@@ -73,7 +73,7 @@ passport.use(
       {
         clientID: "70778912886-hanm0bmck1ftc20gjevk6313uo7duf0h.apps.googleusercontent.com",
         clientSecret: "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",
-        callbackURL: "http://localhost:5000/google/callback",
+        callbackURL: process.env.CLIENT_URL + "/google/callback",
       },
       async function (accessToken, refreshToken, profile, next) {
         try {
@@ -101,7 +101,7 @@ passport.use(
         {
             clientID: "894773335333012",
             clientSecret: "b57b9883d476cb61a30c48844178ccdb",
-            callbackURL: "http://localhost:5000/facebook/callback",
+            callbackURL: process.env.CLIENT_URL + "/facebook/callback",
             profileFields: [
                 "id",
                 "displayName",
@@ -136,7 +136,7 @@ passport.use(
         {
             clientID: "894773335333012",
             clientSecret: "b57b9883d476cb61a30c48844178ccdb",
-            callbackURL: "http://localhost:5000/facebook/callback",
+            callbackURL:  process.env.CLIENT_URL + "/facebook/callback",
             profileFields: [
                 "id",
                 "displayName",
@@ -179,7 +179,7 @@ passport.use(
       {
         clientID: "f9c6f9dd79cd4a4ee5d6",
         clientSecret: "0655a166930d9b0083784550a95791f35b3ec703",
-        callbackURL: "http://localhost:5000/github/callback",
+        callbackURL: process.env.CLIENT_URL + "/github/callback",
       },
       async function (accessToken, refreshToken, profile, next) {
         try {
